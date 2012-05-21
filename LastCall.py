@@ -64,7 +64,10 @@ class LastCall:
 
 
 def log(msg):
-    logPath = os.path.join(mw.pm.addonFolder(), 'lcol-main.log')
+    logPathDir = os.path.join(mw.pm.addonFolder(), 'log')
+    if not os.path.exists(logPathDir):
+        os.makedirs(logPathDir)
+    logPath = os.path.join(mw.pm.addonFolder(), 'log', 'lcol-main.log')
     txt = '%s: %s' % (datetime.now(), msg)
     f = codecs.open(logPath, 'a', 'utf-8')
     f.write(txt + '\n')
